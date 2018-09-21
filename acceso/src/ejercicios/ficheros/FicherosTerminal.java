@@ -43,4 +43,33 @@ public class FicherosTerminal {
         }while(!control);
         return aux;
     }
+    /**
+     * metodo que de forma recursiva recorre los arboles de archibos hasta borrarlos
+     * completamente
+     * @param dir 
+     */
+    public static void recorridoArchivos(File dir)throws SecurityException{
+        File aux = null;
+        // recorrido de los ficheros del directorio
+        for(String i: dir.list()){
+            // se crea el objeto file para trabajar con los elementos
+            aux = new File(dir.getAbsolutePath(),i);
+            // en el caso que sea un directorio
+            if(aux.isDirectory()){
+                // se trata de eliminar
+                if(!aux.delete()){
+                    /*
+                    si no fuese posible se accederia para tratar de eliminar
+                    todos los elementos que tubiese dentro
+                    */
+                    recorridoArchivos(aux);
+                    if(!aux.delete()) throw new SecurityException();
+                }
+                // si fuese un fichero se trata de eliminar
+            }else if(!aux.delete()){
+                // si no se puede se lanza una excepcion ya que no se puede borrar
+                throw new SecurityException();
+            }
+        }
+    }
 }
