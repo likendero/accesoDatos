@@ -45,13 +45,29 @@ public class OctavoEjercicio {
      */
     private static void escribir(String apellido,String departamento,int salario){
         try{
+            int id = 1;
             // creacion del flujo de lectura escritura
             RandomAccessFile escritor = new RandomAccessFile(directorio, "rw");
             // guardado del tamanno original
             long tamano = escritor.length();
             // posicionamiento al final del del documeto
             escritor.seek(escritor.length());
-            escritor.setLength(tamano+61);
+            // se comprueba si el fichero tiene registros
+            if(tamano != 0){
+                // si tiene se posiciona en el anterior
+                escritor.seek(tamano-63);
+                // se guarda el id mas 1
+                id = escritor.readInt() + 1;
+                // se mueve el puntero al final del documento
+                escritor.seek(tamano);
+                // se escribe el id
+                escritor.writeInt(id);
+            }else{
+                // se escribe el primer id
+                escritor.writeInt(id);
+            }
+            
+            
             // annadir apellido
             //escritor.writeUTF(cadenaTreinta(apellido));
             escritor.writeUTF(apellido);
@@ -60,9 +76,9 @@ public class OctavoEjercicio {
             escritor.writeUTF(departamento);
             // escribir salario
             escritor.write(salario);
-            escritor.setLength(tamano+61);
+            escritor.setLength(tamano+63);
             // numero de registros
-            System.out.println("el numero de registros es de " + escritor.length() + " " +(escritor.length()/61));
+            System.out.println("el numero de registros es de " + escritor.length() + " " +(escritor.length()/63));
             // cierre de flujo
             escritor.close();
             

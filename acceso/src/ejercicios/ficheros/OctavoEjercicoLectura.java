@@ -15,14 +15,14 @@ import java.util.Scanner;
 public class OctavoEjercicoLectura {
     private static File directorio = new File("AleatorioEmple.dat");
     private static Scanner key = new Scanner(System.in);
-    private static final int TAMANNO = 61;
+    private static final int TAMANNO = 63;
     private static int numRegistros = 0;
     /**
      * metodo principal
      * @param args 
      */
     public static void main(String[] args) {
-        numRegistros =numeroRegistros();
+        
         try{
             System.out.println(leerRegistro(seleccion()));
         }catch(Exception ex){
@@ -44,7 +44,7 @@ public class OctavoEjercicoLectura {
             // movimiento del puntero
             lector.seek(TAMANNO*registro);
             // lectura
-            salida = lector.readUTF() + " " + lector.readUTF()
+            salida = lector.readInt()+ " " +  lector.readUTF() + " " + lector.readUTF()
                     + " " + lector.readInt() ;
         }catch(IOException io){
             System.out.println("error en la lectura");
@@ -55,7 +55,7 @@ public class OctavoEjercicoLectura {
      * metodo que calcula el numero de registros en el fichero
      * @return 
      */
-    private static int numeroRegistros(){
+    public static int numeroRegistros(){
         int vuelta = 0;
         try{
             // creacion del flujo
@@ -77,6 +77,7 @@ public class OctavoEjercicoLectura {
         // variable para bucle
         boolean control = false;
         int seleccion = 0;
+        numRegistros =numeroRegistros();
         do{
             try{
                 // mensaje al usuario
