@@ -6,6 +6,7 @@
 package ejercicios.ficheros;
 import java.io.File;
 import java.util.Scanner;
+
 /**
  * programa que borra un directorio
  * @author likendero
