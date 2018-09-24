@@ -10,11 +10,16 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.GregorianCalendar;
 /**
  *  clase que contiene metodos con los que trabajar en terminal
  * @author likendero
@@ -289,5 +294,49 @@ public class FicherosTerminal {
             //io.printStackTrace();
         }
         return salida;
+    }
+    /**
+     * metodo para filtrar archivos segun un intervalo de fechas
+     * @param dir
+     * @param filtro
+     * @return 
+     */
+    public static String directorioFechas(File dir,FiltroFecha filtro){
+       // variable para devolver la cadena
+       String salida = "";
+       for(File i: dir.listFiles((FileFilter) filtro)){
+           salida += i.getName() + "\n";  
+       }
+       return salida;
+    }
+    /**
+     * metodo para preguntar al usuario por una fecha
+     * @param key
+     * @return 
+     */
+    public static GregorianCalendar fechas(Scanner key){
+        int dia = 0;
+        int mes = 0;
+        int anno = 0;
+        boolean control = false;
+        // intro del dia
+        do{
+            try{
+                // introduccion de los parametros
+                System.out.println("introduce el dia");
+                dia = key.nextInt();
+                System.out.println("introduce mes");
+                mes = key.nextInt();
+                System.out.println("introduce año");
+                anno = key.nextInt();
+                // comprobacion de la validez de la fecha
+                LocalDate.of(anno,mes,dia);
+                control = true;
+            }catch(DateTimeException da){
+                System.out.println("la fecha no es correcta");
+            }
+        }while(!control);
+            
+        return new GregorianCalendar(anno, mes, dia);
     }
 }
