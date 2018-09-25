@@ -304,6 +304,7 @@ public class FicherosTerminal {
     public static String directorioFechas(File dir,FiltroFecha filtro){
        // variable para devolver la cadena
        String salida = "";
+       
        for(File i: dir.listFiles((FileFilter) filtro)){
            salida += i.getName() + "\n";  
        }
