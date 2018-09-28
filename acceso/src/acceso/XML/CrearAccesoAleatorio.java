@@ -34,6 +34,13 @@ public class CrearAccesoAleatorio {
             acceso.writeUTF("Gonzalez");
             acceso.writeUTF("Informatica");
             acceso.writeInt(2222);
+            /*
+            en esta linea se readapta el tamaño del fichero con el tamaño que tiene que tener tras annadirle el registro
+            para ello se coge la posicion al acabar de escribir y se le suma lo que falta para terminar el tamanno maximo
+            de registro
+            el registro tiene como maximo 122; 122 - (posicionAlTerminarDeEscribir - tamannoInicial) = lo que falta para complear 
+            el registro 
+            */
             acceso.setLength(acceso.getFilePointer()+(122-( acceso.getFilePointer()-posicionIn)));
             System.out.println(acceso.length());
             // id 2 apellido 60 departamento 60 salario 2 = 122
