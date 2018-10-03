@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicios.XML;
+package ejercicios.XML.DOM;
 import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,19 +43,15 @@ public class LeerXml {
             // recorrido de los elementos
             System.out.println(numeros.getLength());
             for(int i = 0; i < numeros.getLength(); i++){
-                // se captura el elemento
-                numero = numeros.item(i);
                 
-                // se saca un elemento a partir del nodo
-                Element elem = (Element) numero;
-                if(elem.getNodeType() == Node.ELEMENT_NODE){
-                    // se saca un nodelist para leer los elementos
-                    NodeList nodo = elem.getElementsByTagName("numero").item(0).getChildNodes();
+                    Element elem = (Element) numeros.item(i);
+                   // NodeList lista = numeros;
+                   
                     // sacar un nodo final para despues sacar su valor
-                    Node valorNodo = (Node)nodo.item(0);
+                    Node valorNodo = (Node)elem.getChildNodes().item(0);
                     System.out.println(Integer.parseInt(valorNodo.getNodeValue()));
                     numerosAux.add(Integer.parseInt(valorNodo.getNodeValue()));
-                }
+             
                 
             }
         }catch(Exception ex){

@@ -1,5 +1,5 @@
 
-package ejercicios.XML;
+package ejercicios.XML.DOM;
 
 import java.io.BufferedReader;
 import java.io.File;
