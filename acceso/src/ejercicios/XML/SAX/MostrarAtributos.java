@@ -6,6 +6,8 @@
 package ejercicios.XML.SAX;
 
 //import jdk.internal.org.xml.sax.XMLReader;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
@@ -23,6 +25,15 @@ public class MostrarAtributos {
         try{
             // instanciacion del lector
             lector = XMLReaderFactory.createXMLReader();
+            
+            // la clase creada para gestionar sax
+            GestorSAX gesSax = new GestorSAX();
+            // se vincula
+            lector.setContentHandler((ContentHandler) gesSax);
+           // creacion de flujo
+            InputSource fileXML = new InputSource("/home/likendero/prueba/Empleado.xml");
+            
+            lector.parse(fileXML);
             
         }catch(Exception ex){
             ex.printStackTrace();
