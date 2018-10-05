@@ -5,9 +5,9 @@
  */
 package ejercicios.XML.SAX;
 
-import jdk.internal.org.xml.sax.Attributes;
-import jdk.internal.org.xml.sax.SAXException;
-import jdk.internal.org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 /**
  *
@@ -26,7 +26,7 @@ public class GestorSAX extends DefaultHandler {
         System.out.println("el nombre de la etiqueta es " + nombre);
         // se comprueba si la etiqueta tiene atributos
         if(atrbts.getLength() != 0){
-            System.out.println("el nombre de l atributos es"
+            System.out.println("el nombre de l atributos es "
                     + atrbts.getQName(0)
                     + " su valor es "
                     + atrbts.getValue(0)

@@ -5,17 +5,14 @@
  */
 package ejercicios.XML.SAX;
 
-//import jdk.internal.org.xml.sax.XMLReader;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
- * lectura de un documento XML a trabes del metodo SAX
- * @author likendero
+ * clase que utiliza sax para analizar un XML
+ * @author linuxdiurno
  */
-public class MostrarAtributos {
+public class LecturaLibroEventos {
     /**
      * metodo principal
      * @param args 
@@ -23,18 +20,13 @@ public class MostrarAtributos {
     public static void main(String[] args) {
         XMLReader lector;
         try{
-            // instanciacion del lector
             lector = XMLReaderFactory.createXMLReader();
             
-            // la clase creada para gestionar sax
-            GestorSAX gesSax = new GestorSAX();
-            // se vincula
-            lector.setContentHandler((ContentHandler) gesSax);
-           // creacion de flujo
-            InputSource fileXML = new InputSource("/home/linuxdiurno/prueba/empleados.xml");
+            GestorLibrosEventos gestor = new GestorLibrosEventos();
             
-            lector.parse(fileXML);
+            lector.setContentHandler(gestor);
             
+            lector.parse("/home/linuxdiurno/prueba/libros.xml");
         }catch(Exception ex){
             ex.printStackTrace();
         }
