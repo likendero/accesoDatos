@@ -1,0 +1,6 @@
+
+añadir una tabla con una clave compuesta y ver el resultado, ver que aparece
+¿Es posible una tabla sin llave primaria?
+que pasa si en la base datos hay una tabla sin llave primaria y la mapeas
+partiendo del esquema original mapear la base de datos sin ralaciones
+mirar .java
