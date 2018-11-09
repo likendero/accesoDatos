@@ -2,6 +2,7 @@ package departamentos;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /*
  * Copyright (C) 2018 likendero
@@ -37,10 +38,14 @@ public class PrimerEjercicio {
         dep.setPais("Espana");
         dep.setTipo("patata");
         dep.setProvincia("alemria");
+        ArrayList<Departamentos> list = new ArrayList<Departamentos>();
+        list.add(dep);
         try{
             // escritura y lectura de comprobacion
             dep.saveData("departamento", "src/departamentos");
             System.out.println(Departamentos.leerFichero(dir).toString());
+            Departamentos.saveDataList(list,new File("src/departamentos"),"departamentosList");
+            System.out.println(Departamentos.readDataList(new File("src/departamentos","departamentosList.dat")).get(0).toString());
         }catch(ClassNotFoundException cl){
             cl.printStackTrace();
         }catch(IOException io){

@@ -16,6 +16,7 @@
  */
 package departamentos;
 
+import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -189,6 +191,32 @@ public class Departamentos implements Serializable{
             throw new IOException("la carpeta no existe");
         }
     }
+    // guardar XML
+    /**
+     * 
+     * @param nombre
+     * @param dir 
+     * @throws java.io.FileNotFoundException 
+     */
+    public void saveXMLXstream(String nombre, String dir) throws FileNotFoundException, IOException{
+        // para poder usar este metodo es necesario importar el jar
+        // creacion de un Xstream nuevo para la creacion del xml
+        XStream xtream = new XStream();
+        
+        // indicar la clase que se ca usar para combertir
+        xtream.alias("departamento", Departamentos.class);
+        /*
+            en este punto le pasamos la instancia del objeto que queremos combertir
+            el dato que nos devuelve es de tipo cadena la cual nos servira para escribir 
+            mas tarde el documento en un fichero, para escribir directamente debemos 
+            pasarle tambien un flujo de salida
+        */
+        // creacion de un flujo de salida
+        FileOutputStream flujo = new FileOutputStream(new File(dir,nombre + ".xml"));
+        //  escritura del xml
+        xtream.toXML(this, flujo);
+        flujo.close();
+    }
     /**
      * metodo que a trabes de DOM guarda la informacion 
      * en un fichero XML
@@ -282,5 +310,28 @@ public class Departamentos implements Serializable{
         return dep;
     }
     
-    
+    /////////////// Lectura y Escritura de varios objetos a la vez //////////////////////////
+    /**
+     * para guardar varios departamentos
+     * @param list lista de departamentos que se van a guardar
+     * se usa una lista al tratarse de un objeto siendo facilmente guardor varios objetos a la 
+     * vex
+     * @throws java.io.FileNotFoundException
+     */
+    public static void saveDataList(ArrayList<Departamentos> list,File dir,String nombre) throws FileNotFoundException, IOException{
+        FileOutputStream flujo = new FileOutputStream(new File(dir,nombre+".dat"));
+        ObjectOutputStream escritor = new ObjectOutputStream(flujo);
+        escritor.writeObject(list);
+    }
+    /**
+     * 
+     * @param dir
+     */
+    public static ArrayList<Departamentos> readDataList(File dir) throws FileNotFoundException, IOException, ClassNotFoundException{
+        ArrayList<Departamentos> dep = null;
+        FileInputStream flujo = new FileInputStream(dir);
+        ObjectInputStream lector = new ObjectInputStream(flujo);
+        dep = (ArrayList<Departamentos>) lector.readObject();
+        return dep;
+    } 
 }
