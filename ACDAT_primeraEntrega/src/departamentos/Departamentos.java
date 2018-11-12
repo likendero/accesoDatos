@@ -291,6 +291,7 @@ public class Departamentos implements Serializable{
     }
     
     ////////////////ESTATICOS/////////////////////////////////////
+   
     /**
      * metodo que muestra por pantalla la informacion dentro de un fichero
      * @param dir directorio del fichero a leer
@@ -309,6 +310,8 @@ public class Departamentos implements Serializable{
         // retorno del departamento
         return dep;
     }
+    
+    
     
     /////////////// Lectura y Escritura de varios objetos a la vez //////////////////////////
     /**
@@ -334,4 +337,77 @@ public class Departamentos implements Serializable{
         dep = (ArrayList<Departamentos>) lector.readObject();
         return dep;
     } 
+     /**
+     * metodo para guardar un listado de departamentos en forma de xml
+     * a trabes del metodo dom
+     * @param deps
+     * @param dir
+     * @param nombreFichero
+     */
+    public static void saveXMLList(ArrayList<Departamentos> deps, File dir, String nombreFichero) throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
+        // creacion del factory
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // creacion de un builder/parser
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        // creacion de un domIMplementation
+        DOMImplementation impl = builder.getDOMImplementation();
+        // Creacion del documento
+        Document document = impl.createDocument(null, "departamentos", null);
+        document.setXmlVersion("1.0");
+        Element raiz = document.getDocumentElement();
+        Element aux;
+        for(Departamentos depAux: deps){
+          // creacion de un elemento departamento nuevo
+          aux = document.createElement("departamento");
+          // enlace del departamento con el elemento raiz
+          raiz.appendChild(aux);
+          // creacion de los sub elementos
+
+            Element idEl = document.createElement("id");
+            Element tipoEl = document.createElement("tipo");
+            Element nombreEl = document.createElement("nombre");
+            Element domicilioEl = document.createElement("domicilio");
+            Element ciudadEl = document.createElement("ciudad");
+            Element cpEl = document.createElement("cp");
+            Element provinciaEl = document.createElement("provincia");
+            Element paisEl = document.createElement("pais");
+
+            // creacion del texto
+            Text idTx = document.createTextNode(depAux.getId());
+            Text tipoTx = document.createTextNode(depAux.getTipo());
+            Text nombreTx = document.createTextNode(depAux.getNombre());
+            Text domicilioTx = document.createTextNode(depAux.getDomicilio());
+            Text ciudadTx = document.createTextNode(depAux.getCiudad());
+            Text cpTx = document.createTextNode(depAux.getCodigoPostal());
+            Text provinciaTx = document.createTextNode(depAux.getProvincia());
+            Text paisTx = document.createTextNode(depAux.getPais());
+
+            // annadir a la estructura
+            aux.appendChild(idEl);
+            aux.appendChild(tipoEl);
+            aux.appendChild(nombreEl);
+            aux.appendChild(domicilioEl);
+            aux.appendChild(ciudadEl);
+            aux.appendChild(cpEl);
+            aux.appendChild(provinciaEl);
+            aux.appendChild(paisEl);
+            // annadir textos
+            idEl.appendChild(idTx);
+            tipoEl.appendChild(tipoTx);
+            nombreEl.appendChild(nombreTx);
+            domicilioEl.appendChild(domicilioTx);
+            ciudadEl.appendChild(ciudadTx);
+            cpEl.appendChild(cpTx);
+            provinciaEl.appendChild(provinciaTx);
+            paisEl.appendChild(paisTx);
+        }
+        // escritura del documento
+        Source source = new DOMSource(document);
+        //FileOutputStream out = new FileOutputStream(new File(dir,nombreFichero+".xml"));
+        Result result = new StreamResult(new File(dir,nombreFichero + ".xml"));
+        // creacion del transformer
+        Transformer trans = TransformerFactory.newInstance().newTransformer();
+        // transformacion
+         trans.transform(source, result);
+    }
 }

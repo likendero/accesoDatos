@@ -40,6 +40,7 @@ public class PrimerEjercicio {
         dep.setProvincia("alemria");
         ArrayList<Departamentos> list = new ArrayList<Departamentos>();
         list.add(dep);
+        list.add(dep);
         try{
             // escritura y lectura de comprobacion
             dep.saveData("departamento", "src/departamentos");

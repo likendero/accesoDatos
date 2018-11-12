@@ -17,7 +17,10 @@
 package departamentos;
 
 import com.thoughtworks.xstream.XStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -39,9 +42,10 @@ public class XstreamPrueba {
         
         try{
             XStream xstream = new XStream();
-            xstream.alias("departamentos", ArrayList.class);
+            xstream.alias("departamentos", List.class);
+            //xstream.aliasField("departamentos",ArrayList.class, "list");
             xstream.alias("departamento", Departamentos.class);
-            System.out.println(xstream.toXML(deps));
+            xstream.toXML(deps, new FileOutputStream(new File("src/departamentos/departamentosXstreamList.xml")));
         }catch(Exception ex){
         }
     }
