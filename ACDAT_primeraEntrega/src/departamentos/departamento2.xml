@@ -1,1 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><departamentos><id>0001</id><tipo>patata</tipo><nombre>recursos humanos</nombre><domicilio>calle el peru nº 12</domicilio><ciudad>Almeria</ciudad><cp>04007</cp><provincia>alemria</provincia><pais>Espana</pais></departamentos>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<departamentos>
+    <id>0001</id>
+    <tipo>patata</tipo>
+    <nombre>recursos humanos</nombre>
+    <domicilio>calle el peru nº 12</domicilio>
+    <ciudad>Almeria</ciudad>
+    <cp>04007</cp>
+    <provincia>alemria</provincia>
+    <pais>Espana</pais>
+</departamentos>

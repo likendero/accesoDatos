@@ -1,0 +1,10 @@
+<departamento>
+  <id>0001</id>
+  <tipo>patata</tipo>
+  <nombre>recursos humanos</nombre>
+  <domicilio>calle el peru nº 12</domicilio>
+  <ciudad>Almeria</ciudad>
+  <codigoPostal>04007</codigoPostal>
+  <provincia>alemria</provincia>
+  <pais>Espana</pais>
+</departamento>

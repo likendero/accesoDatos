@@ -1,0 +1,22 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>departamentosList.xsl</title>
+</head>
+<body>
+<table>
+<tr>
+<th>id</th><th>tipo</th><th>nombre</th><th>domicilio</th><th>ciudad</th><th>codigoPostal</th><th>provincia</th><th>pais</th>
+</tr>
+<tr>
+<td>111</td><td>patata</td><td>hawaii</td><td>c/ el salvador</td><td>bucarest</td><td>22222222</td><td>almeria</td><td>espanna</td>
+</tr>
+<tr>
+<td>111</td><td>patata</td><td>hawaii</td><td>c/ el salvador</td><td>bucarest</td><td>22222222</td><td>almeria</td><td>espanna</td>
+</tr>
+<tr>
+<td>111</td><td>patata</td><td>hawaii</td><td>c/ el salvador</td><td>bucarest</td><td>22222222</td><td>almeria</td><td>espanna</td>
+</tr>
+</table>
+</body>
+</html>

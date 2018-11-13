@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="departamentosList.xsl"?>
+<departamentos>
+  <departamento>
+    <id>111</id>
+    <tipo>patata</tipo>
+    <nombre>hawaii</nombre>
+    <domicilio>c/ el salvador</domicilio>
+    <ciudad>bucarest</ciudad>
+    <codigoPostal>22222222</codigoPostal>
+    <provincia>almeria</provincia>
+    <pais>espanna</pais>
+  </departamento>
+  <departamento>
+    <id>111</id>
+    <tipo>patata</tipo>
+    <nombre>hawaii</nombre>
+    <domicilio>c/ el salvador</domicilio>
+    <ciudad>bucarest</ciudad>
+    <codigoPostal>22222222</codigoPostal>
+    <provincia>almeria</provincia>
+    <pais>espanna</pais>
+  </departamento>
+  <departamento>
+    <id>111</id>
+    <tipo>patata</tipo>
+    <nombre>hawaii</nombre>
+    <domicilio>c/ el salvador</domicilio>
+    <ciudad>bucarest</ciudad>
+    <codigoPostal>22222222</codigoPostal>
+    <provincia>almeria</provincia>
+    <pais>espanna</pais>
+  </departamento>
+</departamentos>
