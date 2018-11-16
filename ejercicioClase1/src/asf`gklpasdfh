@@ -1,0 +1,9 @@
+cp creditos practicos 
+ct creditos teoricos
+crear base de datos con almenos dos tuplas
+2 conectar con el sistema gestor crear porcedimineto almacenado llamado
+AlumnosSinConvocatoria que obtenga un listado de alumnos nombre y modulo
+que han agotado combocatorias (convocatorias = 4 y nota < 5)
+3 aplicacion java que ejecute el procedimineto
+4 mapear la bd creada y mostrar listado alfabetico de alumnos
+HQL 
