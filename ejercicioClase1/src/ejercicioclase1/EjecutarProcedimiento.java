@@ -5,23 +5,22 @@
  */
 package ejercicioclase1;
 
-//import com.mysql.jdbc.Driver;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.sql.StatementEvent;
 
 /**
  *
  * @author Javier Gonzalez Rives
  */
-public class Procedimiento {
-   private static final String conexion =
+public class EjecutarProcedimiento {
+    private static final String conexion =
             "jdbc:mysql://localhost:3306/ejercicio?user=root&password=admin&useTimezone=true&serverTimezone=GMT&SSL=true";
-   private static String procedure = 
-           "create procedure alumnosSinCombocatoria() begin select al.nombre,asig.nombre from ejercicio.alumno al inner join ejercicio.asignatura asig inner join ejercicio.matricula mat on mat.dni = al.dni and mat.AS = asig.AS where mat.nconvocatoria = 4 and mat.nota < 5   ; end";
-    /**
+    private static String llamada = "{call alumnosSinCombocatoria()}";
+   /**
      oppppppppppppppl           
      * @param args 
      */
@@ -31,10 +30,16 @@ public class Procedimiento {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // creacion de la conexion
             Connection conec = DriverManager.getConnection(conexion);
-            Statement sentencia = conec.createStatement();
-            sentencia.execute(procedure);
+            // creacion de la sentencia "llamable" para el procedimento
+            CallableStatement sentencia = conec.prepareCall(llamada);
+           // preparacion de la ejecucion
+            sentencia.execute();
             
-           
+            ResultSet res = sentencia.getResultSet();
+            
+            while(res.next()){
+                System.out.println("nomnre del alumno: " + res.getString(1) + " asignatura: " +res.getString(2) );
+            }
             
             // cerrado de la conexion
             conec.close();
