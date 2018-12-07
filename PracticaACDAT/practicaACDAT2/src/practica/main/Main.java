@@ -36,6 +36,9 @@ public class Main {
     public static String conc = "jdbc:mysql://localhost/instituto?useSSL=false&serverTimezone=Europe/Madrid";
     public static String usuario = "gestorInstituto";
     public static String pass = "gesPass";
+    /**
+     * metodo que prepara y muestra la ventana
+     */
     private static void mostrar(){
         Ventana ven = new Ventana();
         ven.setVisible(true);
