@@ -7,7 +7,7 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/empresaz?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">admin</property>
-    <mapping resource="empresaz/entity/Departamentos.hbm.xml"/>
     <mapping resource="empresaz/entity/Empleados.hbm.xml"/>
+    <mapping resource="empresaz/entity/Departamentos.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

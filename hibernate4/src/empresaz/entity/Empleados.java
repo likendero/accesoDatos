@@ -1,5 +1,5 @@
 package empresaz.entity;
-// Generated 13-nov-2018 9:02:08 by Hibernate Tools 4.3.1
+// Generated 08-ene-2019 9:03:56 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,7 +11,8 @@ public class Empleados  implements java.io.Serializable {
 
 
      private short empNo;
-     private Departamentos departamentos;
+     //private Departamentos departamentos;
+     private byte deptNo;
      private String apellido;
      private String oficio;
      private Short dir;
@@ -23,13 +24,13 @@ public class Empleados  implements java.io.Serializable {
     }
 
 	
-    public Empleados(short empNo, Departamentos departamentos) {
+    public Empleados(short empNo/*, Departamentos departamentos*/) {
         this.empNo = empNo;
-        this.departamentos = departamentos;
+        //this.departamentos = departamentos;
     }
-    public Empleados(short empNo, Departamentos departamentos, String apellido, String oficio, Short dir, Date fechaAlt, Float salario, Float comision) {
+    public Empleados(short empNo,/* Departamentos departamentos,*/ String apellido, String oficio, Short dir, Date fechaAlt, Float salario, Float comision) {
        this.empNo = empNo;
-       this.departamentos = departamentos;
+       //this.departamentos = departamentos;
        this.apellido = apellido;
        this.oficio = oficio;
        this.dir = dir;
@@ -45,13 +46,13 @@ public class Empleados  implements java.io.Serializable {
     public void setEmpNo(short empNo) {
         this.empNo = empNo;
     }
-    public Departamentos getDepartamentos() {
+   /* public Departamentos getDepartamentos() {
         return this.departamentos;
     }
     
     public void setDepartamentos(Departamentos departamentos) {
         this.departamentos = departamentos;
-    }
+    }*/
     public String getApellido() {
         return this.apellido;
     }
@@ -95,6 +96,14 @@ public class Empleados  implements java.io.Serializable {
         this.comision = comision;
     }
 
+    public byte getDeptNo() {
+        return deptNo;
+    }
+
+    public void setDeptNo(byte deptNo) {
+        this.deptNo = deptNo;
+    }
+    
 
 
 
